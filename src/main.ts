@@ -1,20 +1,20 @@
 import { NestFactory } from '@nestjs/core';
 import {
-  FastifyAdapter,
-  NestFastifyApplication,
+    FastifyAdapter,
+    NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
-    new FastifyAdapter(),
-    { bufferLogs: true }
-  );
+    const app = await NestFactory.create<NestFastifyApplication>(
+        AppModule,
+        new FastifyAdapter(),
+        { bufferLogs: true },
+    );
 
-  app.useLogger(app.get(Logger));
+    app.useLogger(app.get(Logger));
 
-  await app.listen(5000);
+    await app.listen(8080);
 }
 bootstrap();
